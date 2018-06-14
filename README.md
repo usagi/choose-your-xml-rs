@@ -1,5 +1,7 @@
 # Choose your XML
 
+**DEPRECATED!**
+
 |         Feature/Crate         |       [xml-rs]     |     [quick-xml]    |       [xml5ever]    |    [sxd-document]  |
 | ----------------------------- | ------------------ | ------------------ | ------------------- | ------------------ |
 | [Document type definition]    | No                 | No                 | Partial<sup>1</sup> | No                 |
