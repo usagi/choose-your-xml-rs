@@ -1,6 +1,7 @@
-# Choose your XML
+**DEPRECATED** in favor to the [roxmltree](https://github.com/RazrFalcon/roxmltree#alternatives).
 
-**DEPRECATED!**
+
+# Choose your XML
 
 |         Feature/Crate         |       [xml-rs]     |     [quick-xml]    |       [xml5ever]    |    [sxd-document]  |
 | ----------------------------- | ------------------ | ------------------ | ------------------- | ------------------ |
