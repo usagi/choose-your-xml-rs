@@ -1,14 +1,15 @@
 [package]
 name = "choose-your-xml"
-version = "0.1.0"
-authors = ["Reizner Evgeniy <razrfalcon@gmail.com>"]
+version = "0.2.0"
+authors = ["Reizner Evgeniy <razrfalcon@gmail.com>", "Usagi Ito <the@usagi.network>"]
+edition = "2018"
 
 [dev-dependencies]
 bencher = "0.1"
-xml-rs = "0.7"
-quick-xml = "0.10"
-xml5ever = "0.11"
-sxd-document = "0.2"
+xml-rs = "0.8.3"
+quick-xml = "0.18.1"
+xml5ever = "0.16.1"
+sxd-document = "0.3.2"
 
 [[bench]]
 name = "xml"

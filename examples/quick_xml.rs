@@ -1,13 +1,11 @@
-extern crate quick_xml;
-
 use std::env;
 use std::io::BufReader;
 use std::fs::File;
 use std::str::{self, Utf8Error};
 
-use quick_xml::reader::Reader;
+use quick_xml::Reader;
 use quick_xml::events::{Event, BytesStart, BytesText};
-use quick_xml::errors::Error as XmlError;
+use quick_xml::Error as XmlError;
 
 type XmlReader = Reader<BufReader<File>>;
 
@@ -88,17 +86,17 @@ fn parse(path: &str) -> Result<()> {
 
                 if let Ok(v) = e.version() {
                     indent(depth);
-                    println!("  version=\"{}\"", str::from_utf8(v)?);
+                    println!("  version=\"{}\"", str::from_utf8(v.as_ref())?);
                 }
 
                 if let Some(Ok(v)) = e.encoding() {
                     indent(depth);
-                    println!("  encoding=\"{}\"", str::from_utf8(v)?);
+                    println!("  encoding=\"{}\"", str::from_utf8(v.as_ref())?);
                 }
 
                 if let Some(Ok(v)) = e.standalone() {
                     indent(depth);
-                    println!("  standalone=\"{}\"", str::from_utf8(v)?);
+                    println!("  standalone=\"{}\"", str::from_utf8(v.as_ref())?);
                 }
             }
             (_, Event::Text(ref e)) => {

@@ -1,5 +1,3 @@
-extern crate xml5ever;
-
 use std::default::Default;
 use std::env;
 use std::io::BufReader;
@@ -44,7 +42,11 @@ fn main() {
         exact_errors: true,
         .. Default::default()
     });
-    tok.feed(input);
+
+    let mut input_buffer = xml5ever::buffer_queue::BufferQueue::new();
+    input_buffer.push_back(input);
+
+    tok.feed(&mut input_buffer);
     tok.end();
 }
 

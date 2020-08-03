@@ -1,11 +1,6 @@
 #[macro_use]
 extern crate bencher;
 
-extern crate xml;
-extern crate quick_xml;
-extern crate xml5ever;
-extern crate sxd_document;
-
 use std::fs;
 use std::env;
 use std::io::Read;
@@ -42,7 +37,7 @@ fn xmlrs_large(bencher: &mut Bencher) {
 }
 
 fn quick_xml_parse(text: &str) {
-    let mut t = quick_xml::reader::Reader::from_reader(text.as_bytes());
+    let mut t = quick_xml::Reader::from_reader(text.as_bytes());
     t.check_comments(true);
     let mut buf = Vec::new();
     let mut ns_buf = Vec::new();
@@ -87,8 +82,11 @@ fn xml5ever_parse(text: &str) {
 
     let input = xml5ever::tendril::StrTendril::from_slice(text);
 
+    let mut input_buffer = xml5ever::buffer_queue::BufferQueue::new();
+    input_buffer.push_back(input.try_reinterpret().unwrap());
+
     let mut t = xml5ever::tokenizer::XmlTokenizer::new(sink, Default::default());
-    t.feed(input);
+    t.feed(&mut input_buffer);
     t.end();
 }
 
